@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using System.Windows.Forms;
 
 namespace Practica3CSV
@@ -92,12 +93,11 @@ namespace Practica3CSV
                     for (int j = 0; j < dataGridView.ColumnCount; j++)
                     {
                         if (j == dataGridView.ColumnCount - 1)
-                            linea += dataGridView.Rows[i-1].Cells[j].Value.ToString() + "";
+                            linea += dataGridView.Rows[i - 1].Cells[j].Value.ToString() + "";
                         else
-                            linea += dataGridView.Rows[i-1].Cells[j].Value.ToString() + ",";
+                            linea += dataGridView.Rows[i - 1].Cells[j].Value.ToString() + ",";
                     }
                     lineas[i] = linea;
-
 
                 }
                 try // File.WriteAllText(filename, linea);
@@ -110,6 +110,17 @@ namespace Practica3CSV
                     MessageBox.Show("Error al guardar el archivo: " + ex.Message);
                 }
             }
+        }
+
+        private void DataGrid_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aplicacionCURPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AplicacionCURP appCurp = new AplicacionCURP();
+            appCurp.Show();
         }
     }
 }
